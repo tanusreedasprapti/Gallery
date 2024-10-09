@@ -1,0 +1,135 @@
+/* Universal reset for margin, padding, and box-sizing */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling with background color */
+body {
+    height: 100vh;
+    background-color: #152238;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ensure images fill their container and maintain aspect ratio */
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Main grid container (previously 'gallery') */
+.photo-grid {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    gap: 15px;
+    margin-inline: 40px;
+}
+
+/* Styling individual photo boxes (previously 'card') */
+.photo-box {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #ff5722;
+}
+
+/* Specific positioning for each photo box using grid-area */
+.photo-box:nth-child(1) {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.photo-box:nth-child(2) {
+    grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.photo-box:nth-child(3) {
+    grid-area: 1 / 2 / span 2 / span 2;
+}
+
+.photo-box:nth-child(4) {
+    grid-area: 1 / 4 / span 1 / span 1;
+}
+
+.photo-box:nth-child(5) {
+    grid-area: 1 / 5 / span 1 / span 1;
+}
+
+.photo-box:nth-child(6) {
+    grid-area: 2 / 4 / span 1 / span 2;
+}
+
+/* Responsive design for smaller screens (max-width: 800px) */
+@media screen and (max-width: 800px) {
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 220px);
+    }
+
+    .photo-box:nth-child(1) {
+        grid-area: 1 / 1 / span 1 / span 1;
+    }
+
+    .photo-box:nth-child(2) {
+        grid-area: 2 / 1 / span 1 / span 1;
+    }
+
+    .photo-box:nth-child(3) {
+        display: none;
+        /* Hide the third image on smaller screens */
+    }
+
+    .photo-box:nth-child(4) {
+        grid-area: 1 / 2 / span 1 / span 1;
+    }
+
+    .photo-box:nth-child(5) {
+        grid-area: 1 / 3 / span 1 / span 1;
+    }
+
+    .photo-box:nth-child(6) {
+        grid-area: 2 / 2 / span 1 / span 2;
+    }
+}
+
+/* Further adjustments for very small screens (max-width: 500px) */
+@media screen and (max-width: 500px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 150px);
+    }
+
+    .photo-box:nth-child(1) {
+        grid-area: 1 / 1 / span 1 / span 1;
+    }
+
+    .photo-box:nth-child(2) {
+        grid-area: 2 / 1 / span 1 / span 1;
+    }
+
+    .photo-box:nth-child(3) {
+        display: none;
+        /* Hide the third image */
+    }
+
+    .photo-box:nth-child(4) {
+        grid-area: 1 / 2 / span 1 / span 1;
+    }
+
+    .photo-box:nth-child(5) {
+        display: none;
+        /* Hide the fifth image */
+    }
+
+    .photo-box:nth-child(6) {
+        grid-area: 2 / 2 / span 1 / span 1;
+    }
+}
